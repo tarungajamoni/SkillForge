@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import auth
+from app.api.routes import auth, courses
 
 app = FastAPI()
 
@@ -14,6 +14,7 @@ app.add_middleware(
 
 # Include the auth router
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
+app.include_router(courses.router, prefix="/courses", tags=["courses"])
 
 @app.get("/")
 def root():
