@@ -45,7 +45,7 @@ class Lesson(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, nullable=False)
-    content = Column(Text)
+    description = Column(Text)
     order = Column(Integer)
     module_id = Column(Integer, ForeignKey("modules.id"), nullable=False)
 
@@ -76,7 +76,19 @@ class ModuleCreate(BaseModel):
 
 class LessonCreate(BaseModel):
     title: str
-    content: str
+    description: str
     video_url: str = None
     order: int
     module_id: int
+
+class CourseSchema(BaseModel):
+    title: str
+    description: str
+
+class ModuleSchema(BaseModel):
+    title: str
+    description: str
+
+class LessonSchema(BaseModel):
+    title: str
+    description: str
